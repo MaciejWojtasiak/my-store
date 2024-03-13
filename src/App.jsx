@@ -1,33 +1,52 @@
 
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
-import Homepage from './pages/Homepage/Homepage';
-import Layout from './pages/Layout/Layout';
-import Login from './pages/Login/Login';
+import Homepage from './ui/Homepage';
+import Cart from './features/cart/Cart';
 import './App.css';
+import Layout from './ui/Layout';
+import CreateOrder from './features/order/CreateOrder';
+import Order from './features/order/Order';
+import Error from './ui/Error';
+import Store, {loader as storeLoader} from './features/store/Store';
+
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element: <Homepage />
+    element: <Layout />,
+    children:[
+      {
+        path:'/',
+        element: <Homepage />
+      },
+      {
+        path:'/store',
+        element: <Store />,
+        loader:storeLoader,
+      },
+      {
+        path:'/cart',
+        element: <Cart />
+      },
+      {
+        path:'/order/new',
+        element: <CreateOrder />
+      },
+      {
+        path:'/order/:orderId',
+        element:<Order />
+      }
+    ]
   },
-  // {
-  //   path:'/',
-  //   element: <Homepage />
-  // },
+  {
+    path:'*',
+    element: <Error />
+  }  
 ])
 
 function App() {
   return (
     <RouterProvider router={router}/>
-    // <Router>
-    //   <Routes>
-    //       <Route path='/' element={<Layout/>}>
-    //         <Route index element={<Homepage />}/>
-    //         <Route path='login' element={<Login />}/>
-    //       </Route>
-    //     </Routes>
-    // </Router>
   )
 }
 
-export default App
+export default App;
