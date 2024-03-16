@@ -1,16 +1,29 @@
 import { useLoaderData } from "react-router-dom";
 import { getStoreItems } from "../../services/apiStore";
 import StoreList from "./StoreList";
+import Categories from "../../ui/Categories";
+import { useState } from "react";
 
 
 function Store() {
   const items = useLoaderData();
-  {if(!items) return <p>Loading...</p>}
-  return <StoreList items={items} />
+  const [currentCategory, setCurrentCategory] = useState('');
+
+  const handleChangeCategory = (e) => {
+    setCurrentCategory(e.target.value);
+  }
   
+  
+  return (
+    <div className="p-5">
+      {currentCategory && <h2 className="uppercase">{currentCategory}</h2>}
+      <Categories handleClick={handleChangeCategory} currentCategory={currentCategory}/>
+      <StoreList items={items} category={currentCategory}/> 
+    </div>
+  )
 }
 
-export  async function loader() {
+export async function loader() {
     const storeItems = await getStoreItems();
     return storeItems;
 }

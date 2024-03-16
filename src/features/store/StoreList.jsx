@@ -1,19 +1,18 @@
 import StoreItem from "./StoreItem";
-function StoreList({items}) {
+function StoreList({items, category}) {
+
+    if(category === '') 
+    return (<ul className="grid sm:grid-cols-2 gap-2">
+    {items.map((item)=>{           
+        return <StoreItem key={item.id} item={item} />
+    })}
+    </ul>);
     return (
-    <div className="items-list">
-        {items.map((item)=>{
-            const {id, title, description, image, price, rating} = item;
-            return <StoreItem 
-                    key={id} 
-                    title={title} 
-                    description={description} 
-                    image={image}
-                    price={price}
-                    rating={rating}
-                    />
+    <ul className="grid sm:grid-cols-2 gap-2">
+        {items.filter(item=>item.category === category).map((item)=>{           
+            return <StoreItem key={item.id} item={item} />
         })}
-    </div>
+    </ul>
   )
 }
 

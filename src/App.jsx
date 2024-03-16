@@ -1,7 +1,7 @@
 
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import Homepage from './ui/Homepage';
-import Cart from './features/cart/Cart';
+import Cart, {loader as cartLoader} from './features/cart/Cart';
 import './App.css';
 import Layout from './ui/Layout';
 import CreateOrder from './features/order/CreateOrder';
@@ -13,6 +13,7 @@ import Store, {loader as storeLoader} from './features/store/Store';
 const router = createBrowserRouter([
   {
     element: <Layout />,
+    errorElement: <Error />,
     children:[
       {
         path:'/',
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
       },
       {
         path:'/cart',
-        element: <Cart />
+        element: <Cart />,
+        loader: cartLoader,
       },
       {
         path:'/order/new',
@@ -36,11 +38,7 @@ const router = createBrowserRouter([
         element:<Order />
       }
     ]
-  },
-  {
-    path:'*',
-    element: <Error />
-  }  
+  }
 ])
 
 function App() {
