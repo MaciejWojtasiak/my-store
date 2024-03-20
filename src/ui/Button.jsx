@@ -6,7 +6,7 @@ function Button({children, disabled}) {
      py-2 px-2 tracking-wide
       rounded-lg uppercase inline-block text-stone-200
        text-xs hover:bg-neutral-600
-        transition-all duration-300"
+        transition-all duration-300 "
     >
         {children}
     </button>

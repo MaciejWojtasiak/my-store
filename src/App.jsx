@@ -7,6 +7,7 @@ import Layout from './ui/Layout';
 import CreateOrder from './features/order/CreateOrder';
 import Order from './features/order/Order';
 import Error from './ui/Error';
+import CreateUser from './features/user/CreateUser';
 import Store, {loader as storeLoader} from './features/store/Store';
 
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:'/order/:orderId',
         element:<Order />
+      },
+      {
+        path:'/user/create',
+        element:<CreateUser />
       }
     ]
   }
