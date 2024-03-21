@@ -4,7 +4,6 @@ import { formatPrice } from "../../utils/formatPrice";
 
 
 function CartItem({item}) { 
-  console.log(item)
   
   return (
     <li className="border-b-2 border-black py-2">

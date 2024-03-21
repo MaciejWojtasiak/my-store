@@ -1,6 +1,7 @@
-function Button({children, disabled}) {
+function Button({children, disabled, handleClick}) {
   return (
     <button
+    onClick={handleClick}
     disabled={disabled}
     className="bg-neutral-500
      py-2 px-2 tracking-wide
