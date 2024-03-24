@@ -1,11 +1,15 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../services/apiStore";
 import CartItem from "./CartItem";
 import Button from "../../ui/Button";
 
-function Cart() {
 
+function Cart() {
   const cart = useSelector(state=>state.cart.cart);
+  const dispatch = useDispatch();
+  const handleClick = () =>{
+    dispatch({type:'cart/clearCart'})
+  }
 
   return (
     <div className="px-4 mt-4">
@@ -13,7 +17,13 @@ function Cart() {
       <ul className="flex flex-col mb-2">
         {cart.map((item)=> <CartItem key={item.id} item={item}/>)}  
       </ul>
-      <Button>Confirm order</Button>
+      <div className="flex gap-5">
+        {cart.length === 0 && <p>There are no items in your cart yet...</p>}
+        {cart.length != 0 && <>
+          <Button>Confirm order</Button>
+          <Button handleClick={handleClick}>Clear cart</Button>
+        </>}        
+      </div>
     </div>
   )
 }

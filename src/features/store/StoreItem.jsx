@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { formatPrice } from "../../utils/formatPrice";
 import { formatTitle } from "../../utils/formatTitle";
 import Button from "../../ui/Button";
-import { addItem , increaseQuantity, decreaseQuantity,} from "../cart/cartSlice";
 
 function StoreItem({ item }) {
   const { title, description, image, price, rating} = item;
@@ -39,7 +38,7 @@ function StoreItem({ item }) {
           {!inCart && <Button handleClick={handleAdd}>Add to cart</Button>}
           {inCart && <div className="flex gap-2 items-center">
             <Button handleClick={handleDecrease}>-</Button>
-            <span>{cart.filter(cartItem=>cartItem.id === item.id)[0].quantity}</span>
+            {/* <span>{cart.filter(cartItem=>cartItem.id === item.id)[0].quantity}</span> */}
             <Button handleClick={handleIncrease}>+</Button>
             </div>}
       </li>

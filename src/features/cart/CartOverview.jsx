@@ -7,6 +7,7 @@ import { getTotalCartQuantity } from "./cartSlice";
 function CartOverview() {
   const totalCartPrice= useSelector(getTotalCartPrice);
   const totalCartQuantity= useSelector(getTotalCartQuantity);
+  if(!totalCartQuantity) return;
   return (
     <div className="flex items-center justify-between bg-stone-800 text-stone-200 px-4 py-4
     text-sm md:text-base uppercase sm:px-6">

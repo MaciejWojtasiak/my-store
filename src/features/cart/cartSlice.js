@@ -25,6 +25,9 @@ const cartSlice = createSlice({
             const item = state.cart.find(item => item.id === action.payload);
             item.quantity--;
             item.totalPrice = item.price * item.quantity;
+            if (item.quantity === 0) {
+                state.cart = state.cart.filter(item => item.id !== action.payload);
+            }
         },
         clearCart(state) {
             state.cart = [];
