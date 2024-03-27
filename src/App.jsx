@@ -4,11 +4,12 @@ import Homepage from './ui/Homepage';
 import Cart, {loader as cartLoader} from './features/cart/Cart';
 import './App.css';
 import Layout from './ui/Layout';
-import CreateOrder from './features/order/CreateOrder';
+import CreateOrder, {action as createOrderAction}from './features/order/CreateOrder';
 import Order from './features/order/Order';
 import Error from './ui/Error';
 import CreateUser from './features/user/CreateUser';
 import Store, {loader as storeLoader} from './features/store/Store';
+import OrderSuccess from './features/order/OrderSuccess';
 
 
 const router = createBrowserRouter([
@@ -32,7 +33,12 @@ const router = createBrowserRouter([
       },
       {
         path:'/order/new',
-        element: <CreateOrder />
+        element: <CreateOrder />,
+        action:createOrderAction
+      },
+      {
+        path:'/order/success',
+        element: <OrderSuccess />
       },
       {
         path:'/order/:orderId',

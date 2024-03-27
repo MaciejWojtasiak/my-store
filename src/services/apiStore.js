@@ -37,4 +37,3 @@ export const getCarts = async () => {
     return res.data;
 }
 
-

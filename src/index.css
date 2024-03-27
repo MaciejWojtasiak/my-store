@@ -4,6 +4,6 @@
 
 @layer components {
     .input {
-        @apply rounded-full px-5 border border-stone-200 text-sm transition-all duration-300 placeholder:text-stone-400  
+        @apply rounded-full px-2 border inline border-stone-200 text-sm transition-all duration-300 placeholder:text-stone-400  
     }
 }

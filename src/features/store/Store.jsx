@@ -9,14 +9,14 @@ function Store() {
   const items = useLoaderData();
   const [currentCategory, setCurrentCategory] = useState('');
 
-  const handleChangeCategory = (e) => {
-    setCurrentCategory(e.target.value);
+  const handleChangeCategory = (e) => { 
+      setCurrentCategory(e.target.value);    
   }
   
   
   return (
     <div className="p-5">
-      {currentCategory && <h2 className="uppercase">{currentCategory}</h2>}
+      <h2 className="uppercase">{currentCategory === '' ? 'All items' : currentCategory}</h2>
       <Categories handleClick={handleChangeCategory} currentCategory={currentCategory}/>
       <StoreList items={items} category={currentCategory}/> 
     </div>
